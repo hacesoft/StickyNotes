@@ -9,7 +9,7 @@ Aplikace pro Nextcloud z dílny Hacesoft pro osobní a sdílené poznámky, úko
 ## Požadavky
 
 - Nextcloud 35 a PHP 8.3 nebo novější.
-- **Nainstalované a zapnuté [Hacesoft Core](https://github.com/hacesoft/core), verze 0.18.0-dev.2 nebo novější.** Bez Core aplikace nefunguje.
+- **Nainstalované a zapnuté [Hacesoft Core](https://github.com/hacesoft/core), verze 0.18.1 nebo novější.** Bez Core aplikace nefunguje.
 
 Core je samostatná aplikace a není přibalené k Lístečkům. Nejprve jej nainstalujte podle návodu v [repozitáři Core](https://github.com/hacesoft/core).
 
@@ -55,3 +55,7 @@ Kontrola překladů pro další vydání (Python 3 a Node.js):
 ```sh
 python3 scripts/check-languages.py
 ```
+
+## O aplikaci a aktualizace
+
+Blok O aplikaci je na začátku Nastavení aplikace. Zobrazuje nainstalovanou a zveřejněnou verzi aplikace i Core. Tlačítko „Zkontrolovat aktualizace“ načte GitHub znovu bez čekání na šestihodinovou cache. Core 0.18.1 čte `src/appinfo/info.xml` z vlastního repozitáře každé aplikace a ověřuje její ID. Vyšší verze na NASu se označí jako novější než zveřejněná. Podrobnosti: [kontrola verzí Core](https://github.com/hacesoft/core/blob/main/docs/UPDATE_CHECK_CZ.md).

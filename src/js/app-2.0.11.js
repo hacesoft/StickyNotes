@@ -69,7 +69,7 @@ const fnStickyNotesMount=(async()=>{
         if(oFirstOverlay)oAppShell.insertBefore(oContent,oFirstOverlay);
         else oAppShell.append(oContent);
     }
-oCore.about.register({id:'hc_stickynotes',name:'Sticky Notes',version:oRoot.dataset.appVersion||'2.0.11',repository:'https://github.com/hacesoft/nextcloud-stickynotes',releaseNotes:'https://github.com/hacesoft/nextcloud-stickynotes/releases',documentation:'https://github.com/hacesoft/nextcloud-stickynotes/blob/main/docs/USER_GUIDE.md',core:'>='+sRequiredCoreVersion});
+oCore.about.register({id:'hc_stickynotes',name:'Sticky Notes',version:oRoot.dataset.appVersion||'2.0.11',repository:'https://github.com/hacesoft/nextcloud-stickynotes',releaseNotes:'https://github.com/hacesoft/nextcloud-stickynotes/tree/HEAD/release',documentation:'https://github.com/hacesoft/nextcloud-stickynotes#readme',core:'>='+sRequiredCoreVersion});
 const fnCoreLog=(sLevel,sMessage,oDetails={})=>{try{oCore.logger?.[sLevel]?.(`[hc_stickynotes] ${sMessage}`,oDetails)}catch(_e){}};
 
 const fnGlobalError=(oEvent)=>{
@@ -669,6 +669,7 @@ const oCoreAboutController=oCore.about.mount($('sn-core-about'),{
     requiredCoreVersion:sRequiredCoreVersion,
     heading:t('hc_stickynotes','About'),
 });
+$('sn-check-updates').onclick=async()=>{const button=$('sn-check-updates');if(button.disabled)return;button.disabled=true;try{await oCoreAboutController.refresh();}catch(error){showError(error);}finally{button.disabled=false;}};
 $('sn-save').onclick=()=>saveNote().catch(showError);
 $('sn-save-settings').onclick=()=>saveSettings().catch(showError);
 $('sn-help-mode').onchange=()=>document.querySelector('#sn-settings-overlay .sn-settings-panel')?.classList.toggle('sn-help-visible',$('sn-help-mode').checked);

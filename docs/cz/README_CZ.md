@@ -12,7 +12,7 @@
 
 Historické audity NC34 ani staré proprietární binární archivy nejsou součástí tohoto zdrojového balíku.
 
-Povinná závislost: nainstalujte a zapněte [Core](https://github.com/hacesoft/core) verze 0.18.0-dev.2 nebo novější. [Hlavní český README](../../README_CZ.md).
+Povinná závislost: nainstalujte a zapněte [Core](https://github.com/hacesoft/core) verze 0.18.1 nebo novější. [Hlavní český README](../../README_CZ.md).
 
 ## Jazykové mutace
 

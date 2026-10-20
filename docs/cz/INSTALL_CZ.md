@@ -4,7 +4,7 @@
 
 [Česky](INSTALL_CZ.md) · [English](../en/INSTALL.md) · [Dokumentace](../cz/README_CZ.md)
 
-Cíl: Nextcloud 35, PHP 8.3+, zapnutý Shared App Core 0.18.0-dev.2+. Následující skript počítá s projektovým Docker nasazením, webovým kontejnerem Nextcloudu (obvykle `nextcloud-app`) a případně samostatným cron kontejnerem.
+Cíl: Nextcloud 35, PHP 8.3+, zapnutý Shared App Core 0.18.1+. Následující skript počítá s projektovým Docker nasazením, webovým kontejnerem Nextcloudu (obvykle `nextcloud-app`) a případně samostatným cron kontejnerem.
 
 1. Vytvoř společnou obnovitelnou zálohu databáze Nextcloudu a kódu aplikace. Zachovej existující tabulky `stickynotes_*` a `hc_stickynotes_*` i uživatelskou konfiguraci. Zkontroluj `occ status` a verzi Core.
 2. Rozbal na NASu celý zdrojový ZIP včetně `src/`, `scripts/`, `install.sh` a `uninstall.sh`. V rozbalené složce spusť:
@@ -19,4 +19,4 @@ Pro ruční instalaci slouží samostatný runtime ZIP, který obsahuje pouze ad
 
 Volitelný `scripts/nas-migration-check.sh` jen čte původní databázové ID na původním nasazení MariaDB. Staré záznamy v databázi se zachovávají; zdrojový balík neobsahuje nástroj k jejich mazání.
 
-Povinná závislost: nainstalujte a zapněte [Core](https://github.com/hacesoft/core) verze 0.18.0-dev.2 nebo novější. [Hlavní český README](../../README_CZ.md).
+Povinná závislost: nainstalujte a zapněte [Core](https://github.com/hacesoft/core) verze 0.18.1 nebo novější. [Hlavní český README](../../README_CZ.md).

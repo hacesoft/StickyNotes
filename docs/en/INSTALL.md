@@ -4,7 +4,7 @@
 
 [English](INSTALL.md) · [Česky](../cz/INSTALL_CZ.md) · [Documentation](../en/README.md)
 
-Target: Nextcloud 35, PHP 8.3+, enabled Shared App Core 0.18.0-dev.2+. The following script expects the project's Docker setup with a Nextcloud web container (usually `nextcloud-app`) and optionally a cron container.
+Target: Nextcloud 35, PHP 8.3+, enabled Shared App Core 0.18.1+. The following script expects the project's Docker setup with a Nextcloud web container (usually `nextcloud-app`) and optionally a cron container.
 
 1. Back up the Nextcloud database and application runtime as one recoverable set. Retain existing `stickynotes_*` and `hc_stickynotes_*` tables and user configuration. Check `occ status` and the Core version.
 2. Extract the full source ZIP to a directory on the NAS, including `src/`, `scripts/`, `install.sh`, and `uninstall.sh`. From that directory run:
@@ -19,4 +19,4 @@ For a manual Nextcloud installation use the separate runtime ZIP whose top-level
 
 The optional `scripts/nas-migration-check.sh` is a read-only legacy-ID check for the original MariaDB deployment. Legacy database data is retained; the source package includes no deletion utility.
 
-Required dependency: install and enable [Core](https://github.com/hacesoft/core) version 0.18.0-dev.2 or newer. [Main English README](../../README.md).
+Required dependency: install and enable [Core](https://github.com/hacesoft/core) version 0.18.1 or newer. [Main English README](../../README.md).

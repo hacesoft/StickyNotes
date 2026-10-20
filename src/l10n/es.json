@@ -225,7 +225,8 @@
     "ntfy is an event-only channel. Sticky Notes sends only the note or task title, event type and a link back to Nextcloud. Note content and user identities are not sent.": "ntfy es un canal solo de eventos. Sticky Notes envía únicamente el título de la nota o tarea, el tipo de evento y un enlace de vuelta a Nextcloud. No se envían el contenido de la nota ni las identidades de los usuarios.",
     "ntfy notifications": "Notificaciones ntfy",
     "ntfy server": "Servidor ntfy",
-    "ntfy topic": "Tema ntfy"
+    "ntfy topic": "Tema ntfy",
+    "Check for updates": "Buscar actualizaciones"
   },
   "pluralForm": "nplurals=2; plural=(n != 1);"
 }

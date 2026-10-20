@@ -12,7 +12,7 @@
 
 Previous NC34 audit reports and proprietary historical binaries are not included in this source package.
 
-Required dependency: install and enable [Core](https://github.com/hacesoft/core) version 0.18.0-dev.2 or newer. [Main English README](../../README.md).
+Required dependency: install and enable [Core](https://github.com/hacesoft/core) version 0.18.1 or newer. [Main English README](../../README.md).
 
 ## Languages
 

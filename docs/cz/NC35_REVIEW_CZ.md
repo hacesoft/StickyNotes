@@ -2,7 +2,7 @@
 
 # Lístečky 2.0.9 — NC35, oprávnění a cron
 
-Vyžadují NC35, PHP 8.3+ a zapnutý Shared App Core 0.18.0-dev.2+. Technické ID `hc_stickynotes`, tabulky a uložený obsah zůstávají. Převod ID `stickynotes` proběhl v dřívější verzi; tento balík už žádný import neobsahuje. Původní databázová data nemažte.
+Vyžadují NC35, PHP 8.3+ a zapnutý Shared App Core 0.18.1+. Technické ID `hc_stickynotes`, tabulky a uložený obsah zůstávají. Převod ID `stickynotes` proběhl v dřívější verzi; tento balík už žádný import neobsahuje. Původní databázová data nemažte.
 
 ## Opravy po kontrole
 
@@ -19,6 +19,6 @@ Vyžadují NC35, PHP 8.3+ a zapnutý Shared App Core 0.18.0-dev.2+. Technické I
 
 ## Editor a hranice současné integrace
 
-Lístečky stále používají vlastní HTML editor (`contenteditable`, formátování a obrázky podle dosavadního chování). Core 0.18.0-dev.2 nabízí editor s formátem Markdown; přímé nahrazení by změnilo uložené HTML a mohlo poškodit formátování starých poznámek. Převod formátu a plné sjednocení editoru **nejsou hotové**. Pozadí papíru a barevné styly kategorie jsou vlastností poznámky a zůstávají v aplikaci. Tento balík proto není potvrzením dokončené migrace Lístečků na společný editor; vydání této funkce vyžaduje samostatný převod se zpětnou kompatibilitou a test na datech NASu.
+Lístečky stále používají vlastní HTML editor (`contenteditable`, formátování a obrázky podle dosavadního chování). Core 0.18.1 nabízí editor s formátem Markdown; přímé nahrazení by změnilo uložené HTML a mohlo poškodit formátování starých poznámek. Převod formátu a plné sjednocení editoru **nejsou hotové**. Pozadí papíru a barevné styly kategorie jsou vlastností poznámky a zůstávají v aplikaci. Tento balík proto není potvrzením dokončené migrace Lístečků na společný editor; vydání této funkce vyžaduje samostatný převod se zpětnou kompatibilitou a test na datech NASu.
 
 Automaticky ověřeno: JS syntaxe, integrační statický test, sestavení runtime ZIPu a shell syntaxe. Bez přístupu k NASu nejsou ověřeny PHP runtime, DB migrace, práva různých účtů ani chování cron po upgradu.

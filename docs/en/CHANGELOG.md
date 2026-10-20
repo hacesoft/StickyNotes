@@ -12,7 +12,7 @@
 
 ## 2.0.7 — NC35 candidate
 
-- Target Nextcloud 35, PHP 8.3+, and Shared App Core 0.18.0-dev.2+.
+- Target Nextcloud 35, PHP 8.3+, and Shared App Core 0.18.1+.
 - Check group access and `view`/`edit` permissions on the server and in card actions.
 - Sanitize stored HTML during save and read; preserve existing note data.
 - Remove the exact orphaned legacy reminder job through migration, and remove the current job before uninstalling code.

@@ -9,7 +9,7 @@ A Nextcloud application developed by Hacesoft for personal and shared notes, tas
 ## Requirements
 
 - Nextcloud 35 and PHP 8.3 or newer.
-- **[Hacesoft Core](https://github.com/hacesoft/core), version 0.18.0-dev.2 or newer, installed and enabled.** Sticky Notes requires Core to function.
+- **[Hacesoft Core](https://github.com/hacesoft/core), version 0.18.1 or newer, installed and enabled.** Sticky Notes requires Core to function.
 
 Core is a separate application; it is not bundled with Sticky Notes. Install it first using the instructions in the [Core repository](https://github.com/hacesoft/core).
 
@@ -55,3 +55,7 @@ Translation audit for future releases (Python 3 and Node.js):
 ```sh
 python3 scripts/check-languages.py
 ```
+
+## About and updates
+
+About appears at the beginning of Application settings. It shows installed and published versions of the app and Core. “Check for updates” fetches GitHub again without waiting for the six-hour cache. Core 0.18.1 reads `src/appinfo/info.xml` from each application’s own repository and validates its ID. A newer NAS installation is shown as newer than published. Details: [Core version checks](https://github.com/hacesoft/core/blob/main/docs/UPDATE_CHECK_EN.md).

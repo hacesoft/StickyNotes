@@ -12,7 +12,7 @@
 
 ## 2.0.7 — kandidát pro NC35
 
-- Podpora Nextcloudu 35, PHP 8.3+ a Shared App Core 0.18.0-dev.2+.
+- Podpora Nextcloudu 35, PHP 8.3+ a Shared App Core 0.18.1+.
 - Kontroly skupinového přístupu a práv `view`/`edit` na serveru i v kartách.
 - Bezpečné zpracování uloženého HTML při ukládání a načítání; zachování poznámek.
 - Odstranění konkrétní osiřelé úlohy upomínek a úklid vlastní úlohy před odinstalací.

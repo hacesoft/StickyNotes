@@ -39,4 +39,4 @@ Category appearance is described in [Categories and appearance](../en/CATEGORIES
 The **☺** button opens a local Unicode emoji library. Emoji are grouped into categories (smileys, people, animals, food, activities, travel, objects, symbols and flags). Recently used emoji are stored only in the browser local storage. The picker uses no external service and sends no data outside Nextcloud. Emoji are inserted at the current cursor position in the note title or body.
 
 
-**Core integration:** Existing rich-text content is stored as HTML and remains editable in the app. Core 0.18.0-dev.2 uses Markdown; its editor cannot replace this editor without a content migration.
+**Core integration:** Existing rich-text content is stored as HTML and remains editable in the app. Core 0.18.1 uses Markdown; its editor cannot replace this editor without a content migration.
