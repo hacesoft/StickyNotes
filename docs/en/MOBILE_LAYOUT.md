@@ -2,7 +2,7 @@
 
 # Sticky Notes: mobile layout
 
-Version: 2.0.11. The app uses the Shared App Core Layout API on Nextcloud 35.
+Version: 2.0.12. The app uses the Shared App Core Layout API on Nextcloud 35.
 
 The board has one Core main scroll area. On a phone, **Filters** opens category, status, sorting and search controls in a drawer. Choosing a category or status closes the drawer, leaving the main viewport for notes. The editor and settings scroll inside dialogs that adapt when the keyboard opens.
 

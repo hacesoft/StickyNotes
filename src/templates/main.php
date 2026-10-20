@@ -5,8 +5,8 @@ declare(strict_types=1);
 use OCP\Util;
 
 // Záměrně pouze nezávislý Guard. Core ani hlavní bundle se zde nenačítají.
-Util::addScript('hc_stickynotes', 'hc-core-guard-2.0.11');
-Util::addStyle('hc_stickynotes', 'style-2.0.11');
+Util::addScript('hc_stickynotes', 'hc-core-guard-2.0.12');
+Util::addStyle('hc_stickynotes', 'style-2.0.12');
 ?>
 <div
     id="hc-stickynotes-app"

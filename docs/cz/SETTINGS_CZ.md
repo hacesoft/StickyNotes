@@ -34,4 +34,4 @@ Volba **Zobrazit podrobnou nápovědu** zobrazí doplňující vysvětlení u na
 
 Sekce **O aplikaci / About** zobrazuje název aplikace, verzi, autora **hacesoft**, licenci a klikací odkaz na projekt:
 
-`https://github.com/hacesoft/nextcloud-stickynotes`
+`https://github.com/hacesoft/StickyNotes`

@@ -34,4 +34,4 @@ Optional natural tilt and shadows are available. Categories can define their own
 
 The **About** section shows the application name, version, author **hacesoft**, license and a clickable project URL:
 
-`https://github.com/hacesoft/nextcloud-stickynotes`
+`https://github.com/hacesoft/StickyNotes`

@@ -46,7 +46,7 @@ final class PageController extends Controller {
             'coreStatusUrl' => $this->urlGenerator->linkTo('', 'index.php/apps/hc_shared_app_core/api/v1/status'),
             'coreStyleUrl' => $this->urlGenerator->linkTo('hc_shared_app_core', 'css/workspace.css'),
             'coreScriptUrl' => $this->urlGenerator->linkTo('hc_shared_app_core', 'js/hc_shared_app_core.js'),
-            'appScriptUrl' => $this->urlGenerator->linkTo(Application::APP_ID, 'js/app-2.0.11.js'),
+            'appScriptUrl' => $this->urlGenerator->linkTo(Application::APP_ID, 'js/app-2.0.12.js'),
             'appShellUrl' => $this->urlGenerator->linkToRoute('hc_stickynotes.page.shell'),
         ]);
     }

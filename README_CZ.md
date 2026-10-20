@@ -1,6 +1,9 @@
 [🇨🇿 **Česky**](README_CZ.md) | [🇬🇧 English](README.md)
 
-# Žluté lístečky 2.0.11
+> **Vstupní archiv pro Publisher:** Tento ZIP má výslednou strukturu s jediným kořenovým adresářem aplikace. Neobsahuje NAS nástroje (`install.sh`, `uninstall.sh`, `build-release.sh`, `scripts/`). Návody, které je zmiňují, platí pro samostatný úplný zdrojový repozitář, nikoli pro tento archiv. Podepsaný `.tar.gz` pro App Store vytváří až Hacesoft Publisher.
+
+
+# Žluté lístečky 2.0.12
 
 Aplikace pro Nextcloud z dílny Hacesoft pro osobní a sdílené poznámky, úkoly s termíny, kategorie, widget Dashboardu a volitelná oznámení. Poznámky lze sdílet s uživateli nebo skupinami s právem prohlížení či úprav.
 
@@ -9,7 +12,7 @@ Aplikace pro Nextcloud z dílny Hacesoft pro osobní a sdílené poznámky, úko
 ## Požadavky
 
 - Nextcloud 35 a PHP 8.3 nebo novější.
-- **Nainstalované a zapnuté [Hacesoft Core](https://github.com/hacesoft/core), verze 0.18.1 nebo novější.** Bez Core aplikace nefunguje.
+- **Nainstalované a zapnuté [Hacesoft Core](https://github.com/hacesoft/core), verze 0.18.8 nebo novější.** Bez Core aplikace nefunguje.
 
 Core je samostatná aplikace a není přibalené k Lístečkům. Nejprve jej nainstalujte podle návodu v [repozitáři Core](https://github.com/hacesoft/core).
 
@@ -40,7 +43,7 @@ Před odinstalací si přečtěte část o odstranění v instalačním návodu.
 
 `src/` obsahuje aplikaci, `scripts/` instalační pomocníky a `docs/cz/` a `docs/en/` českou a anglickou dokumentaci. Kompletní zdrojový balíček obsahuje `install.sh` i `uninstall.sh`. `build-release.sh` sestavuje runtime ZIP/tarball z `src/`; generované výstupy patří do `release/`.
 
-Podklady pro vývojáře: [vývoj](docs/cz/DEVELOPMENT_CZ.md), [kontrola Nextcloud 35](docs/cz/NC35_REVIEW_CZ.md) a [přehled změn](docs/cz/CHANGELOG_CZ.md).
+Podklady pro vývojáře: [vývoj](docs/cz/DEVELOPMENT_CZ.md), [instalační kontrola](docs/cz/INSTALL_CZ.md) a [přehled změn](CHANGELOG.cs.md).
 
 Licence: [AGPL-3.0-or-later](LICENSE).
 
@@ -58,4 +61,8 @@ python3 scripts/check-languages.py
 
 ## O aplikaci a aktualizace
 
-Blok O aplikaci je na začátku Nastavení aplikace. Zobrazuje nainstalovanou a zveřejněnou verzi aplikace i Core. Tlačítko „Zkontrolovat aktualizace“ načte GitHub znovu bez čekání na šestihodinovou cache. Core 0.18.1 čte `src/appinfo/info.xml` z vlastního repozitáře každé aplikace a ověřuje její ID. Vyšší verze na NASu se označí jako novější než zveřejněná. Podrobnosti: [kontrola verzí Core](https://github.com/hacesoft/core/blob/main/docs/UPDATE_CHECK_CZ.md).
+Blok O aplikaci je na začátku Nastavení aplikace. Zobrazuje nainstalovanou a zveřejněnou verzi aplikace i Core. Tlačítko „Zkontrolovat aktualizace“ načte GitHub znovu bez čekání na šestihodinovou cache. Core 0.18.8 čte `src/appinfo/info.xml` z vlastního repozitáře každé aplikace a ověřuje její ID. Vyšší verze na NASu se označí jako novější než zveřejněná. Podrobnosti: [kontrola verzí Core](https://github.com/hacesoft/core/blob/main/docs/cz/CORE_REFERENCE.md).
+
+## Úplný zdrojový balíček a Hacesoft Publisher
+
+Balíček pro GitHub a instalaci na NAS obsahuje `install.sh`, `uninstall.sh`, `build-release.sh`, adresáře `scripts/`, `docs/` a hotovou aplikaci v `src/`. Pro instalaci na NAS rozbalte celý projekt a v jeho kořeni spusťte `sudo sh install.sh`. Do `custom_apps` se kopíruje pouze běhový obsah `src/`, nikoliv dokumentace projektu a instalační skripty. Publisher následně provede vlastní kontrolu a sestaví distribuční archiv s kořenovým adresářem podle ID aplikace; zdejší zdrojový ZIP není přímo distribuční TAR.GZ.

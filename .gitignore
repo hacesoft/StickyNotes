@@ -1,14 +1,8 @@
-# Local/private signing material
-*.key
-*.csr
-*.crt
-certificates/
-
-# Build staging
+# Local packaging results and development caches
+release/
 .build/
-
-# Editor / OS
-.vscode/
-.idea/
+.release-build/
+__pycache__/
+*.pyc
 .DS_Store
 Thumbs.db

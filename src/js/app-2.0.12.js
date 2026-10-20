@@ -69,7 +69,7 @@ const fnStickyNotesMount=(async()=>{
         if(oFirstOverlay)oAppShell.insertBefore(oContent,oFirstOverlay);
         else oAppShell.append(oContent);
     }
-oCore.about.register({id:'hc_stickynotes',name:'Sticky Notes',version:oRoot.dataset.appVersion||'2.0.11',repository:'https://github.com/hacesoft/nextcloud-stickynotes',releaseNotes:'https://github.com/hacesoft/nextcloud-stickynotes/tree/HEAD/release',documentation:'https://github.com/hacesoft/nextcloud-stickynotes#readme',core:'>='+sRequiredCoreVersion});
+oCore.about.register({id:'hc_stickynotes',name:'Sticky Notes',version:oRoot.dataset.appVersion||'2.0.12',repository:'https://github.com/hacesoft/StickyNotes',releaseNotes:'https://github.com/hacesoft/StickyNotes/tree/HEAD/release',documentation:'https://github.com/hacesoft/StickyNotes#readme',core:'>='+sRequiredCoreVersion});
 const fnCoreLog=(sLevel,sMessage,oDetails={})=>{try{oCore.logger?.[sLevel]?.(`[hc_stickynotes] ${sMessage}`,oDetails)}catch(_e){}};
 
 const fnGlobalError=(oEvent)=>{

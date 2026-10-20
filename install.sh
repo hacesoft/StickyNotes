@@ -99,7 +99,7 @@ graceful_web_reload() {
         fi
         return 0
     fi
-    say "Web runtime graceful reload: not available in this container; Guard 0.18.0-dev.2 transition retries remain active."
+    say "Web runtime graceful reload: not available in this container; Guard transition retries remain active."
 }
 
 deploy_tree() {

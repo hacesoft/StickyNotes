@@ -39,4 +39,4 @@ Vzhled kategorie je popsán v [Kategorie a vzhled](../cz/CATEGORIES_CZ.md).
 Tlačítko **☺** otevírá lokální knihovnu Unicode emoji. Emoji jsou rozdělená do kategorií (smajlíci, lidé, zvířata, jídlo, aktivity, cestování, předměty, symboly a vlajky). Naposledy použité emoji se ukládají pouze v místním úložišti prohlížeče. Výběr emoji nevyužívá žádnou externí službu a neposílá data mimo Nextcloud. Emoji se vloží na aktuální pozici kurzoru v nadpisu nebo těle lístečku.
 
 
-**Integrace Core:** Dosavadní formátovaný obsah se ukládá jako HTML a zůstává upravitelný v aplikaci. Core 0.18.1 používá Markdown; bez migrace obsahu jeho editor nelze bezpečně dosadit.
+**Integrace Core:** Dosavadní formátovaný obsah se ukládá jako HTML a zůstává upravitelný v aplikaci. Core 0.18.8 používá Markdown; bez migrace obsahu jeho editor nelze bezpečně dosadit.

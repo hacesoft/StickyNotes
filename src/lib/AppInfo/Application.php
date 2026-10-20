@@ -13,7 +13,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
 class Application extends App implements IBootstrap {
     public const APP_ID = 'hc_stickynotes';
-    public const VERSION = '2.0.11';
+    public const VERSION = '2.0.12';
 
     public function __construct() {
         parent::__construct(self::APP_ID);
