@@ -1,7 +1,5 @@
 [🇨🇿 Česky](README_CZ.md) | [🇬🇧 **English**](README.md)
 
-> **Publisher input archive:** This ZIP uses the final app-rooted format. NAS deployment helpers (`install.sh`, `uninstall.sh`, `build-release.sh`, `scripts/`) are not included. Any instructions referencing those files apply to the separate full-source GitHub repository, not this archive. The final signed App Store `.tar.gz` is produced by Hacesoft Publisher.
-
 
 # Sticky Notes 2.0.12
 
@@ -51,9 +49,7 @@ License: [AGPL-3.0-or-later](LICENSE).
 
 The application UI supports all 11 languages: Czech (`cs`), English (`en`), German (`de`), Spanish (`es`), French (`fr`), Italian (`it`), Dutch (`nl`), Polish (`pl`), Portuguese (`pt`), Slovak (`sk`) and Ukrainian (`uk`). Unsupported languages and individual missing translations fall back to English (EN). Every catalog has the same complete key set and preserves message placeholders. Text returned directly by the server or Core components follows those services’ localization. Guides and development documentation are available only in Czech and English.
 
-Every future app update must audit the shared language set: `cs`, `en`, `de`, `es`, `fr`, `it`, `nl`, `pl`, `pt`, `sk`, `uk`. Add missing languages and translation keys, verify Nextcloud language selection, and document the languages actually supported. A catalog file alone does not prove translation completeness. User guides and development documentation are published only in Czech and English.
 
-Translation audit for future releases (Python 3 and Node.js):
 
 ```sh
 python3 scripts/check-languages.py
@@ -62,7 +58,3 @@ python3 scripts/check-languages.py
 ## About and updates
 
 About appears at the beginning of Application settings. It shows installed and published versions of the app and Core. “Check for updates” fetches GitHub again without waiting for the six-hour cache. Core 0.18.8 reads `src/appinfo/info.xml` from each application’s own repository and validates its ID. A newer NAS installation is shown as newer than published. Details: [Core version checks](https://github.com/hacesoft/core/blob/main/docs/en/CORE_REFERENCE.md).
-
-## Full source archive and Hacesoft Publisher
-
-This GitHub/NAS project contains install.sh, uninstall.sh, build-release.sh, scripts/, docs/ and the installable Nextcloud runtime in src/. For NAS installation, extract the entire project and run `sudo sh install.sh` from its root. Do not copy the project root or scripts/ directly into Nextcloud custom_apps; the installer deploys src/. Publisher independently validates this full-source input and builds its own app-ID-rooted, signed distribution archive.

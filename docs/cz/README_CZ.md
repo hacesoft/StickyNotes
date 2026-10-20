@@ -10,7 +10,6 @@
 - [Sdílení a práva](../cz/SHARING_CZ.md) · [Dashboard](../cz/DASHBOARD_CZ.md)
 - [Nastavení](../cz/SETTINGS_CZ.md) · [Oznámení](../cz/NOTIFICATIONS_CZ.md)
 
-Historické audity NC34 ani staré proprietární binární archivy nejsou součástí tohoto zdrojového balíku.
 
 Povinná závislost: nainstalujte a zapněte [Core](https://github.com/hacesoft/core) verze 0.18.8 nebo novější. [Hlavní český README](../../README_CZ.md).
 

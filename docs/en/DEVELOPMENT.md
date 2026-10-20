@@ -14,6 +14,5 @@
 | `release/` | Generated runtime ZIP/tar; ignored by the source repository |
 | `build-release.sh` | Maintainer script that builds an app-rooted runtime archive |
 
-The full-source ZIP is for maintenance and NAS installation. A runtime ZIP has only the top-level `hc_stickynotes/` application directory and `LICENSE`; it contains no old archives, documentation, test code, or installer. The original `old/` binaries are not part of this project distribution.
 
 Run `sh build-release.sh` to package the runtime. Development tests and Git metadata are excluded from this installation source archive. The app version lives in `src/appinfo/info.xml`. Existing data is retained during upgrades; database permissions, browser behavior, PHP execution, and cron still require NAS qualification.

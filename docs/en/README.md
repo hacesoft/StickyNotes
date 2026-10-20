@@ -10,7 +10,6 @@
 - [Sharing and permissions](../en/SHARING.md) · [Dashboard](../en/DASHBOARD.md)
 - [Settings](../en/SETTINGS.md) · [Notifications](../en/NOTIFICATIONS.md)
 
-Previous NC34 audit reports and proprietary historical binaries are not included in this source package.
 
 Required dependency: install and enable [Core](https://github.com/hacesoft/core) version 0.18.8 or newer. [Main English README](../../README.md).
 
@@ -18,9 +17,7 @@ Required dependency: install and enable [Core](https://github.com/hacesoft/core)
 
 The application UI supports all 11 languages: Czech (`cs`), English (`en`), German (`de`), Spanish (`es`), French (`fr`), Italian (`it`), Dutch (`nl`), Polish (`pl`), Portuguese (`pt`), Slovak (`sk`) and Ukrainian (`uk`). Unsupported languages and individual missing translations fall back to English (EN). Every catalog has the same complete key set and preserves message placeholders. Text returned directly by the server or Core components follows those services’ localization. Guides and development documentation are available only in Czech and English.
 
-Every future app update must audit the shared language set: `cs`, `en`, `de`, `es`, `fr`, `it`, `nl`, `pl`, `pt`, `sk`, `uk`. Add missing languages and translation keys, verify Nextcloud language selection, and document the languages actually supported. A catalog file alone does not prove translation completeness. User guides and development documentation are published only in Czech and English.
 
-Translation audit for future releases (Python 3 and Node.js):
 
 ```sh
 python3 scripts/check-languages.py

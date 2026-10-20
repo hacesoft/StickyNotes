@@ -1,7 +1,5 @@
 [🇨🇿 **Česky**](README_CZ.md) | [🇬🇧 English](README.md)
 
-> **Vstupní archiv pro Publisher:** Tento ZIP má výslednou strukturu s jediným kořenovým adresářem aplikace. Neobsahuje NAS nástroje (`install.sh`, `uninstall.sh`, `build-release.sh`, `scripts/`). Návody, které je zmiňují, platí pro samostatný úplný zdrojový repozitář, nikoli pro tento archiv. Podepsaný `.tar.gz` pro App Store vytváří až Hacesoft Publisher.
-
 
 # Žluté lístečky 2.0.12
 
@@ -62,7 +60,3 @@ python3 scripts/check-languages.py
 ## O aplikaci a aktualizace
 
 Blok O aplikaci je na začátku Nastavení aplikace. Zobrazuje nainstalovanou a zveřejněnou verzi aplikace i Core. Tlačítko „Zkontrolovat aktualizace“ načte GitHub znovu bez čekání na šestihodinovou cache. Core 0.18.8 čte `src/appinfo/info.xml` z vlastního repozitáře každé aplikace a ověřuje její ID. Vyšší verze na NASu se označí jako novější než zveřejněná. Podrobnosti: [kontrola verzí Core](https://github.com/hacesoft/core/blob/main/docs/cz/CORE_REFERENCE.md).
-
-## Úplný zdrojový balíček a Hacesoft Publisher
-
-Balíček pro GitHub a instalaci na NAS obsahuje `install.sh`, `uninstall.sh`, `build-release.sh`, adresáře `scripts/`, `docs/` a hotovou aplikaci v `src/`. Pro instalaci na NAS rozbalte celý projekt a v jeho kořeni spusťte `sudo sh install.sh`. Do `custom_apps` se kopíruje pouze běhový obsah `src/`, nikoliv dokumentace projektu a instalační skripty. Publisher následně provede vlastní kontrolu a sestaví distribuční archiv s kořenovým adresářem podle ID aplikace; zdejší zdrojový ZIP není přímo distribuční TAR.GZ.
