@@ -12,9 +12,9 @@ Lze nastavit počet sloupců a řádků ve widgetu. Tyto hodnoty určují maxim�
 
 ## Stránkování a rozložení
 
-Lze nastavit počet lístečků na stránku a šířku pracovní plochy. Verze 2.0.9 obsahuje nové responzivní chování hlavní stránky, filtrů, stránkování, nastavení, kategorií a dialogů. Na úzkém telefonu se hlavní seznam přepne na jeden sloupec a prvky se nesmí roztahovat mimo viewport.
+Lze nastavit počet lístečků na stránku a šířku pracovní plochy. Aplikace obsahuje responzivní chování hlavní stránky, filtrů, stránkování, nastavení, kategorií a dialogů. Na úzkém telefonu se hlavní seznam přepne na jeden sloupec a prvky se nesmí roztahovat mimo viewport.
 
-Responzivní rozhraní ověř na telefonu, tabletu a desktopu při testu verze NC35 na NASu.
+Responzivní rozhraní se přizpůsobuje telefonu, tabletu i počítači.
 
 ## Notifikace
 

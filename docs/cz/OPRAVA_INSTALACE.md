@@ -2,6 +2,9 @@
 
 # Lístečky: opakovatelná instalace na NC35
 
+> **Pouze pro vývojářské Docker nasazení:** nejde o instalaci ani opravu přes App Store. Pro běžnou instalaci použijte Nextcloud → Aplikace.
+
+
 Po rozbalení úplného zdrojového balíčku do příslušného adresáře NAS spusťte pouze:
 
 ```sh

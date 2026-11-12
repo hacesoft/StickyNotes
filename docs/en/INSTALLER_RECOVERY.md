@@ -2,6 +2,9 @@
 
 # Sticky Notes: repeatable NC35 installation
 
+> **Developer-only Docker deployment:** this is not an App Store install/repair procedure. For ordinary installations use Nextcloud → Apps.
+
+
 Extract the complete source package into the corresponding NAS directory, then run:
 
 ```sh

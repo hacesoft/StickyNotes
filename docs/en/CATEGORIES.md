@@ -25,6 +25,12 @@ Categories can have:
 
 The category style is reflected in the final appearance of its notes.
 
+## Managing and editing categories (2.0.13)
+
+Category settings use a compact list. Open a category you are permitted to edit using the **Edit** button, **double-clicking** its row or pressing **Enter** when the row is focused. Read-only categories cannot be opened for editing.
+
+When entering a category name, Sticky Notes suggests previously used names and current category names. Suggestions appear on click or typing, not automatically when the editor opens, and do not depend on browser autofill. Name history is stored locally in the browser under a key scoped to the signed-in user; it does not sync between devices. A tooltip reveals long names.
+
 ## Natural sticky-note appearance
 
 The application can optionally use a more natural presentation with slight note tilt and shadows instead of a perfectly aligned grid.

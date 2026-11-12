@@ -1,18 +1,22 @@
-[🇨🇿 Česky](../cz/DEVELOPMENT_CZ.md) | [🇬🇧 **English**](../en/DEVELOPMENT.md)
+[🇨🇿 Česky](../cz/DEVELOPMENT_CZ.md) | [🇬🇧 **English**](DEVELOPMENT.md)
 
-# Development and package layout
+# Developer and release package guide
 
-[Documentation](../en/README.md) · [Česká dokumentace](../cz/README_CZ.md)
+This repository includes complete application source. It is **not** itself an official signed Nextcloud App Store installation package.
 
-| Directory/file | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `src/` | Runtime app tree copied into `custom_apps/hc_stickynotes` |
-| `scripts/install-transaction.sh` | Restores previous code and app state after an installation failure |
-| `scripts/remove-own-job.php` | Used by `uninstall.sh` before removing application code |
-| `scripts/nas-migration-check.sh` | Optional read-only legacy database diagnostics |
-| `docs/` | User and maintainer documentation, including installation and update procedures |
-| `release/` | Generated runtime ZIP/tar; ignored by the source repository |
-| `build-release.sh` | Maintainer script that builds an app-rooted runtime archive |
+| `src/` | Source tree installed as `custom_apps/hc_stickynotes/` (by a suitable deployment mechanism) |
+| `docs/` | Public Czech/English instructions |
+| `install.sh`, `uninstall.sh` | Developer-only Docker deployment/recovery and removal |
+| `scripts/` | Helpers required by those Docker scripts |
+| `build-release.sh` | Creates unsigned archives for later Publisher verification/signing |
+| `release/` | Local generated archives, excluded from Git |
 
+**Developer build:** Run `sh build-release.sh` from the project root. The script reads the canonical version and app ID from `src/appinfo/info.xml` and creates one **public input** `release/hc_stickynotes-2.0.14-full-source.zip` for Hacesoft Publisher plus two **internal unsigned** runtime outputs (`.zip` and `.tar.gz`). Publisher verifies and signs the runtime after CP21/HDS tests. GitHub-root `screenshot/01.png` to `03.png` are public presentation assets and are not part of the installed runtime package.
 
-Run `sh build-release.sh` to package the runtime. Development tests and Git metadata are excluded from this installation source archive. The app version lives in `src/appinfo/info.xml`. Existing data is retained during upgrades; database permissions, browser behavior, PHP execution, and cron still require NAS qualification.
+**Important:** ZIP and TAR.GZ produced by this script are **not code-signed**. For an official Nextcloud App Store release, the maintainer must first pass Hacesoft Publisher CP21 and HDS 1.2.1, sign the *exact final runtime package* with the private key and certificate, and register/publish its signed archive using the Nextcloud App Store process. The process has two distinct signing stages: Nextcloud app integrity signing adds `appinfo/signature.json` to the runtime tree; the final `.tar.gz` is then signed with SHA-512 for the App Store release record. Changing files or archive bytes after the relevant signature invalidates it. Keep the **private `.key`** secret. A `.csr` and issued `.crt` are public certificate materials used for registration, but none of these certificate files, private audit reports or deployment logs belong inside the GitHub application-source ZIP.
+
+**Docker developer deployment:** Only if the local layout is compatible and you have backups, run `sudo sh install.sh`. It is a privileged deployment script, not the recommended method for users. See [installation guide](INSTALL.md) and [recovery](INSTALLER_RECOVERY.md). The public source contains no private HDS/CP21 evidence or internal tests: those are retained separately by the release maintainer.
+
+[Official Nextcloud App Store developer guide](https://nextcloudappstore.readthedocs.io/en/latest/developer.html) · [Main README](../../README.md)

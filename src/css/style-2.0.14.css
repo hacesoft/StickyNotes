@@ -165,7 +165,8 @@
 .sn-note-paper .sn-rich-body,
 .sn-note-paper .sn-rich-body *{color:var(--sn-paper-text,#171717)!important}
 .sn-title-separator{background:var(--sn-separator,rgba(0,0,0,.28))!important}
-.sn-category-live-preview{color:inherit}
+/* Keep preview text readable on light and dark note colors, independent of Nextcloud theme. */
+.sn-category-live-preview,.sn-category-live-preview *{color:var(--sn-preview-text,#171717)!important}
 .sn-widget-card{color:var(--sn-text,#171717)!important}
 .sn-widget-card *{color:inherit!important}
 
@@ -1041,3 +1042,260 @@
 #hc-stickynotes-app .sn-assigned-selected:not([hidden]){display:flex;flex-wrap:wrap;gap:5px;max-width:100%;padding:5px 0}
 #hc-stickynotes-app .sn-assigned-selected button{max-width:100%;min-height:32px;padding:3px 8px;border-radius:999px;overflow-wrap:anywhere}
 #hc-stickynotes-app .sn-assignee-badge{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+
+/* Category editor: never allow inputs or preview to stretch the administration dialog. */
+#hc-stickynotes-app .sn-category-editor-surface>*{min-width:0}
+#hc-stickynotes-app .sn-category-fields>label{min-width:0}
+#hc-stickynotes-app .sn-category-fields input,#hc-stickynotes-app .sn-category-fields select{max-width:100%}
+
+/* Plovoucí výběr ikony: mimo grid i scrollovanou plochu dialogu. */
+body > #sn-icon-picker.sn-icon-picker{
+    position:fixed!important;
+    z-index:11500!important;
+    box-sizing:border-box;
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:6px;
+    margin:0!important;
+    padding:10px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    border:1px solid var(--color-border);
+    border-radius:10px;
+    background:var(--color-main-background);
+    color:var(--color-main-text);
+    box-shadow:0 12px 36px rgba(0,0,0,.4);
+}
+body > #sn-icon-picker.sn-icon-picker[hidden]{display:none!important}
+body > #sn-icon-picker.sn-icon-picker button{
+    box-sizing:border-box;
+    min-width:0!important;
+    width:100%;
+    height:40px;
+    padding:4px!important;
+    font-size:1.25rem;
+    text-align:center;
+    border-radius:6px;
+}
+body > #sn-icon-picker.sn-icon-picker button:focus-visible{
+    outline:2px solid var(--color-primary-element);
+    outline-offset:1px;
+}
+
+/* Vlastní historie názvů kategorií: plovoucí, izolovaná od autofillu Edge. */
+body > .sn-cat-name-suggestions{position:fixed!important;z-index:11080!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;gap:2px!important;overflow-y:auto!important;overscroll-behavior:contain!important;overflow-x:hidden!important;min-width:0!important;padding:5px!important;background:var(--color-main-background,#202020)!important;color:var(--color-main-text,#fff)!important;border:1px solid var(--color-border,#888)!important;border-radius:8px!important;box-shadow:0 8px 24px rgba(0,0,0,.35)!important;}
+body > .sn-cat-name-suggestions[hidden]{display:none!important;}
+body > .sn-cat-name-suggestions .sn-cat-name-option{display:block!important;box-sizing:border-box!important;flex:0 0 auto!important;min-width:0!important;max-width:100%!important;width:100%!important;min-height:34px!important;text-align:left!important;padding:7px 10px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;background:transparent!important;color:inherit!important;border:0!important;border-radius:5px!important;cursor:pointer!important;}
+body > .sn-cat-name-suggestions .sn-cat-name-option:hover,body > .sn-cat-name-suggestions .sn-cat-name-option[aria-selected="true"]{background:var(--color-background-hover,rgba(128,128,128,.22))!important;}
+
+/* 2.0.13: Compact category administration, no changes to stored styles. */
+#hc-stickynotes-app #sn-style-overlay .sn-style-panel{
+    box-sizing:border-box; width:min(960px,calc(100vw - 24px))!important;
+    padding:14px 18px!important; min-height:0!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-dialog-title{
+    min-height:34px; margin:0 0 8px!important; font-size:1.05rem;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-section-head{
+    display:flex;align-items:center;gap:12px;min-height:42px;
+    margin:0 0 8px;padding:0;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-section-head h3{
+    margin:0;font-size:1.1rem;line-height:1.35;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-section-description{
+    margin:2px 0 0!important;font-size:.83rem;line-height:1.35;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-section-head>button{
+    width:auto!important;min-height:34px;padding:5px 12px;flex:0 0 auto;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor{
+    margin:6px 0 8px!important;padding:11px 12px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor-surface{
+    display:grid;grid-template-columns:minmax(0,1.45fr) minmax(245px,1fr);
+    align-items:start;gap:14px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-fields{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px 12px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-fields>label{
+    display:flex;flex-direction:column;gap:3px;min-width:0;
+    font-size:.87rem;line-height:1.2;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-fields input:not([type=hidden]),
+#hc-stickynotes-app #sn-style-overlay .sn-category-fields select,
+#hc-stickynotes-app #sn-style-overlay #sn-icon-current{
+    box-sizing:border-box;min-height:34px!important;height:34px!important;
+    margin:0;max-width:100%;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-fields input[type=color]{
+    width:60px!important;padding:2px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-live-preview{
+    min-height:132px!important;padding:12px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-live-preview h3{
+    font-size:1.15rem;line-height:1.3;margin:9px 0 7px;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-live-preview p{
+    margin:0;font-size:.86rem;line-height:1.35;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor-surface>div>strong{
+    display:block;margin:0 0 5px;font-size:.88rem;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;margin-top:10px;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer .sn-system-category{
+    margin:0!important;padding:4px 6px!important;max-width:62%;
+    background:transparent!important;font-size:.82rem;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-system-category small{
+    margin-left:22px;font-size:.78rem;line-height:1.25;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer .sn-inline-actions{
+    margin:0!important;flex:0 0 auto;gap:7px;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer button{
+    min-height:34px;padding:5px 10px;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-row{
+    box-sizing:border-box;display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:10px!important;align-items:center!important;
+    min-height:47px;padding:5px 2px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-main{
+    display:grid!important;grid-template-columns:145px minmax(0,1fr)!important;
+    align-items:center!important;gap:12px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-cat-mini{
+    box-sizing:border-box;width:145px!important;min-height:33px!important;
+    padding:4px 7px!important;font-size:.81rem;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-info{
+    gap:1px;font-size:.88rem;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-info small{font-size:.76rem}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-actions{gap:5px}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-actions button{
+    min-width:34px!important;width:34px!important;min-height:34px!important;
+    height:34px!important;padding:4px!important;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-row-editable{cursor:pointer;border-radius:6px}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-row-editable:hover{
+    background:var(--color-background-hover);
+}
+#hc-stickynotes-app #sn-style-overlay .sn-category-list-row-editable:focus-visible{
+    outline:2px solid var(--color-primary-element);outline-offset:-2px;
+}
+#hc-stickynotes-app #sn-style-overlay .sn-dialog-actions{
+    margin-top:9px!important;padding:0;
+}
+@media(max-width:850px){
+    #hc-stickynotes-app #sn-style-overlay .sn-category-editor-surface{grid-template-columns:1fr!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-fields{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:640px){
+    #hc-stickynotes-app #sn-style-overlay .sn-style-panel{width:100%!important;padding:12px!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-section-head{align-items:flex-start!important;flex-wrap:wrap}
+    #hc-stickynotes-app #sn-style-overlay .sn-section-head>button{width:auto!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-list-main{grid-template-columns:105px minmax(0,1fr)!important;gap:7px!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-cat-mini{width:105px!important;min-height:35px!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-list-row{grid-template-columns:minmax(0,1fr) auto!important;gap:5px!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-list-actions{flex-wrap:nowrap!important}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-list-info small{font-size:.7rem}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer{flex-wrap:wrap;align-items:flex-end}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer .sn-system-category{max-width:100%}
+    #hc-stickynotes-app #sn-style-overlay .sn-category-editor-footer .sn-inline-actions{margin-left:auto!important}
+}
+
+/* 2.0.13: Compact draggable settings dialog with logical tabs. */
+#hc-stickynotes-app .sn-settings-panel{width:min(980px,calc(100vw - 28px))!important;padding:16px 18px 14px!important;overflow-x:hidden!important;transform:translate(var(--sn-dx,0px),var(--sn-dy,0px));transition:box-shadow .15s ease,transform .12s ease}
+#hc-stickynotes-app .sn-settings-panel.sn-is-dragging{box-shadow:0 18px 44px rgba(0,0,0,.42)}
+#hc-stickynotes-app .sn-settings-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;cursor:grab;user-select:none}
+#hc-stickynotes-app .sn-settings-head:active{cursor:grabbing}
+#hc-stickynotes-app .sn-settings-head .sn-dialog-title{display:flex;flex-direction:column;gap:4px;margin:0!important}
+#hc-stickynotes-app .sn-drag-caption{opacity:.55;font-size:.77rem;font-weight:400;line-height:1.25}
+#hc-stickynotes-app .sn-settings-toolbar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin:0 0 12px}
+#hc-stickynotes-app .sn-help-toggle{margin:0!important}
+#hc-stickynotes-app .sn-help-toggle label{display:inline-flex!important;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--color-border);border-radius:999px;background:var(--color-background-hover)}
+#hc-stickynotes-app .sn-help-toggle input{margin:0}
+#hc-stickynotes-app .sn-settings-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;padding:0 0 12px;border-bottom:1px solid var(--color-border)}
+#hc-stickynotes-app .sn-settings-tabs button{border:1px solid var(--color-border)!important;background:var(--color-background-hover)!important;border-radius:999px!important;padding:8px 14px!important;min-height:38px!important;font-weight:600;box-shadow:none!important}
+#hc-stickynotes-app .sn-settings-tabs button.active{background:var(--color-primary-element)!important;color:var(--color-primary-element-text)!important;border-color:var(--color-primary-element)!important}
+#hc-stickynotes-app .sn-settings-tab-panel{display:block}
+#hc-stickynotes-app .sn-settings-tab-panel[hidden]{display:none!important}
+#hc-stickynotes-app .sn-settings-card{padding:14px 14px 12px;border:1px solid var(--color-border);border-radius:14px;background:color-mix(in srgb,var(--color-main-background) 82%, var(--color-background-hover) 18%);margin-bottom:12px}
+#hc-stickynotes-app .sn-settings-card h3,#hc-stickynotes-app .sn-settings-card h4{margin:0 0 8px}
+#hc-stickynotes-app .sn-settings-card .sn-inline-actions{margin-top:12px}
+#hc-stickynotes-app .sn-settings-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+#hc-stickynotes-app .sn-settings-card label{gap:4px!important}
+#hc-stickynotes-app .sn-settings-card input,#hc-stickynotes-app .sn-settings-card select,#hc-stickynotes-app .sn-settings-card textarea{margin-top:2px}
+#hc-stickynotes-app .sn-notification-channels{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
+#hc-stickynotes-app .sn-check-setting{padding:10px 12px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background-hover)}
+#hc-stickynotes-app .sn-check-setting input{margin-right:8px}
+#hc-stickynotes-app .sn-section-description{margin:0 0 10px}
+#hc-stickynotes-app .sn-ntfy-privacy{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:var(--color-background-hover)}
+#hc-stickynotes-app .sn-event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;margin-top:8px}
+#hc-stickynotes-app .sn-event-grid label{padding:8px 10px;border-radius:10px;background:var(--color-background-hover)}
+#hc-stickynotes-app .sn-settings-actions{position:sticky;bottom:-14px;padding-top:12px;margin-top:12px;background:linear-gradient(to top,var(--color-main-background) 75%,rgba(0,0,0,0))}
+#hc-stickynotes-app .sn-about-card #sn-core-about{margin-bottom:10px}
+@media(max-width:850px){
+  #hc-stickynotes-app .sn-settings-panel{padding:14px 14px 12px!important;width:calc(100vw - 14px)!important;transform:none!important}
+  #hc-stickynotes-app .sn-settings-grid,#hc-stickynotes-app .sn-event-grid{grid-template-columns:1fr!important}
+  #hc-stickynotes-app .sn-settings-head{cursor:default}
+  #hc-stickynotes-app .sn-drag-caption{display:none}
+  #hc-stickynotes-app .sn-settings-tabs button{flex:1 1 calc(50% - 8px)}
+}
+
+/* 2.0.13: compact settings tabs, smaller toggles, improved checkbox visuals. */
+#hc-stickynotes-app .sn-settings-panel{width:min(920px,calc(100vw - 24px))!important;padding:14px 16px 12px!important}
+#hc-stickynotes-app .sn-settings-head{margin-bottom:6px!important}
+#hc-stickynotes-app .sn-settings-toolbar{justify-content:flex-end!important;margin:0 0 8px!important}
+#hc-stickynotes-app .sn-help-toggle{display:inline-flex!important;align-items:center!important;gap:8px!important;padding:6px 10px!important;border:1px solid var(--color-border)!important;border-radius:999px!important;background:rgba(255,255,255,.03)!important;max-width:none!important}
+#hc-stickynotes-app .sn-help-toggle span{font-size:.92rem;font-weight:500;line-height:1.2}
+#hc-stickynotes-app .sn-help-toggle:hover,#hc-stickynotes-app .sn-help-toggle:focus-within{background:rgba(255,255,255,.06)!important;border-color:color-mix(in srgb,var(--color-primary-element) 55%,var(--color-border))!important;box-shadow:none!important;outline:none!important}
+#hc-stickynotes-app .sn-help-toggle::before,#hc-stickynotes-app .sn-help-toggle::after{display:none!important;content:none!important}
+#hc-stickynotes-app .sn-settings-tabs{padding-bottom:10px!important;margin-bottom:10px!important}
+#hc-stickynotes-app .sn-settings-tabs button{padding:7px 13px!important;min-height:34px!important;font-size:.95rem!important}
+#hc-stickynotes-app .sn-settings-card{padding:12px 12px 10px!important;border-radius:12px!important;margin-bottom:10px!important}
+#hc-stickynotes-app .sn-settings-card h3{margin:0 0 6px!important;font-size:1.05rem!important}
+#hc-stickynotes-app .sn-settings-card h4{margin:0 0 6px!important;font-size:1rem!important}
+#hc-stickynotes-app .sn-settings-grid{gap:10px!important}
+#hc-stickynotes-app .sn-check-setting,
+#hc-stickynotes-app .sn-system-category,
+#hc-stickynotes-app .sn-event-grid label{background:rgba(255,255,255,.03)!important;border:1px solid var(--color-border)!important;border-radius:10px!important;box-shadow:none!important;outline:none!important}
+#hc-stickynotes-app .sn-check-setting{display:flex!important;align-items:flex-start!important;gap:8px!important;padding:8px 10px!important;min-height:auto!important}
+#hc-stickynotes-app .sn-check-setting span{display:block;line-height:1.3}
+#hc-stickynotes-app .sn-check-setting .sn-help{margin-left:24px!important}
+#hc-stickynotes-app .sn-system-category{display:flex!important;flex-direction:column!important;gap:6px!important;padding:8px 10px!important;max-width:fit-content!important}
+#hc-stickynotes-app .sn-system-category-main{display:inline-flex!important;align-items:center!important;gap:8px!important}
+#hc-stickynotes-app .sn-notification-channels{gap:8px!important;margin:6px 0 8px!important}
+#hc-stickynotes-app .sn-notification-channels .sn-check-setting{flex:0 1 auto!important}
+#hc-stickynotes-app .sn-ntfy-privacy{margin:0 0 8px!important;padding:8px 10px!important;font-size:.92rem!important;line-height:1.35!important}
+#hc-stickynotes-app .sn-ntfy-settings .sn-settings-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+#hc-stickynotes-app .sn-clear-token{margin-top:8px!important;display:inline-flex!important;max-width:max-content!important}
+#hc-stickynotes-app .sn-inline-actions{display:flex!important;align-items:center!important;gap:10px!important;flex-wrap:wrap}
+#hc-stickynotes-app .sn-event-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px 10px!important;margin-top:6px!important}
+#hc-stickynotes-app .sn-event-grid label{display:flex!important;align-items:flex-start!important;gap:8px!important;padding:8px 10px!important;line-height:1.3!important}
+#hc-stickynotes-app input[type="checkbox"]{inline-size:16px!important;block-size:16px!important;min-width:16px!important;min-height:16px!important;margin:1px 0 0 0!important;padding:0!important;box-shadow:none!important;outline:none!important;accent-color:var(--color-primary-element)}
+#hc-stickynotes-app input[type="checkbox"]:hover{box-shadow:none!important}
+#hc-stickynotes-app .sn-help-toggle input[type="checkbox"]:focus-visible,
+#hc-stickynotes-app .sn-check-setting input[type="checkbox"]:focus-visible,
+#hc-stickynotes-app .sn-system-category input[type="checkbox"]:focus-visible,
+#hc-stickynotes-app .sn-event-grid input[type="checkbox"]:focus-visible{outline:2px solid var(--color-primary-element)!important;outline-offset:2px!important;border-radius:3px!important;box-shadow:none!important}
+#hc-stickynotes-app .sn-help-toggle label{padding:0!important;border:0!important;background:transparent!important}
+#hc-stickynotes-app .sn-about-card h3{display:none!important}
+@media(max-width:850px){
+  #hc-stickynotes-app .sn-settings-panel{width:calc(100vw - 12px)!important;padding:12px 12px 10px!important}
+  #hc-stickynotes-app .sn-settings-tabs button{flex:1 1 calc(50% - 8px)!important}
+  #hc-stickynotes-app .sn-ntfy-settings .sn-settings-grid,
+  #hc-stickynotes-app .sn-event-grid,
+  #hc-stickynotes-app .sn-settings-grid{grid-template-columns:1fr!important}
+  #hc-stickynotes-app .sn-settings-toolbar{justify-content:flex-start!important}
+}

@@ -1,60 +1,53 @@
 [🇨🇿 Česky](README_CZ.md) | [🇬🇧 **English**](README.md)
 
+# Sticky Notes 2.0.14
 
-# Sticky Notes 2.0.12
+Sticky Notes is a Nextcloud application for colorful personal and shared notes, tasks with deadlines, categories, Dashboard widgets and optional notifications. Notes can be shared with users or groups with view/edit permissions.
 
-A Nextcloud application developed by Hacesoft for personal and shared notes, tasks with due dates, categories, a Dashboard widget and optional notifications. Share notes with users or groups using view/edit permissions.
+![Sticky Notes overview](screenshot/01.png)
 
-<img width="1134" height="617" alt="image" src="https://github.com/user-attachments/assets/c9e34307-17b8-4a27-97c3-cbb349a57cfe" />
+## Install — Nextcloud App Store (recommended)
 
-## Requirements
+**For regular users and administrators, install the official signed release through Nextcloud, not by executing the GitHub source installer.**
 
-- Nextcloud 35 and PHP 8.3 or newer.
-- **[Hacesoft Core](https://github.com/hacesoft/core), version 0.18.8 or newer, installed and enabled.** Sticky Notes requires Core to function.
+1. In Nextcloud, sign in as an administrator and open **Apps**.
+2. Find **Sticky Notes** (`hc_stickynotes`) in the Nextcloud App Store and install the latest officially published release.
+3. Install and enable **Hacesoft Shared App Core** (`hc_shared_app_core`) version **0.18.8 or newer** first, then install/enable Sticky Notes.
+4. For updates, use the normal **Apps** update mechanism. Back up the database and application data before upgrading.
 
-Core is a separate application; it is not bundled with Sticky Notes. Install it first using the instructions in the [Core repository](https://github.com/hacesoft/core).
+Requirements: **Nextcloud 35**, **PHP 8.3+**, enabled [Hacesoft Core](https://github.com/hacesoft/core) 0.18.8+. This is a separate required application and is not bundled with Sticky Notes. The newest source version may not yet be published in the App Store; a GitHub source ZIP is **not** a signed App Store package.
 
-## Installation and updates
+[Detailed installation instructions](docs/en/INSTALL.md) · [Nextcloud App Store](https://apps.nextcloud.com/)
 
-Download and extract the complete source package. From the extracted project root, run:
+## For developers and custom Docker deployments
+
+This repository contains complete *application* source code. `install.sh` is a **developer/maintainer deployment tool for a specific Docker-based Nextcloud layout** (including Synology NAS setups), **not the recommended end-user installation method**. It requires `sudo`, a working Docker CLI and access to the Nextcloud containers. It is not a generic Nextcloud installer:
 
 ```sh
 sudo sh install.sh
 ```
 
-The installer supports the documented Synology/Docker deployment. Read the [installation guide](docs/en/INSTALL.md) for prerequisites and upgrade instructions. Existing notes remain in the database during upgrades. Before updating, back up the database and application files.
+Do not execute it on a production Nextcloud instance simply because it is included on GitHub. Review the script, deployment requirements and backups first. Likewise, `sudo sh uninstall.sh` is for maintainers of that Docker deployment, not the normal Apps interface.
 
-To uninstall, read the removal section in the installation guide and use `sudo sh uninstall.sh` from the project root. Review the script's options before removing stored data.
+`sh build-release.sh` creates one public `hc_stickynotes-2.0.14-full-source.zip` **input ZIP for Hacesoft Publisher**, plus the two **unsigned internal build artifacts** `hc_stickynotes-2.0.14.zip` and `hc_stickynotes-2.0.14.tar.gz` required by Publisher 0.3.34. Only the `-full-source.zip` is submitted to Publisher. Publisher verifies the runtime and handles signing and publication; none of these build artifacts is a signed App Store package. Official releases undergo Hacesoft Publisher CP21 / HDS checks and app-signing separately, using the maintainer's private key (never distributed in this repository).
+
+[Developer guide](docs/en/DEVELOPMENT.md) · [Update guide](docs/en/UPDATE.md)
 
 ## Documentation
 
-- [Documentation index](docs/en/README.md)
-- [User guide](docs/en/USER_GUIDE.md)
-- [Sharing and permissions](docs/en/SHARING.md)
-- [Editor](docs/en/EDITOR.md)
-- [Dashboard widget](docs/en/DASHBOARD.md)
-- [Settings](docs/en/SETTINGS.md)
-- [Notifications](docs/en/NOTIFICATIONS.md)
-- [Mobile layout](docs/en/MOBILE_LAYOUT.md)
+[Documentation index](docs/en/README.md) · [User guide](docs/en/USER_GUIDE.md) · [Categories](docs/en/CATEGORIES.md) · [Sharing](docs/en/SHARING.md) · [Editor](docs/en/EDITOR.md) · [Dashboard](docs/en/DASHBOARD.md) · [Settings](docs/en/SETTINGS.md) · [Notifications](docs/en/NOTIFICATIONS.md) · [Mobile layout](docs/en/MOBILE_LAYOUT.md)
 
-## Source layout
+## Source and release files
 
-`src/` contains the application runtime, `scripts/` installation helpers and `docs/cz/` and `docs/en/` Czech and English documentation. `install.sh` and `uninstall.sh` are included in the full source package. `build-release.sh` builds runtime ZIP/tarball artifacts from `src/`; generated output belongs in `release/`.
+- `src/` — full application source (PHP, JavaScript, CSS, translations, templates, metadata).
+- `docs/` — public Czech/English documentation; screenshots are kept separately in the GitHub-root `screenshot/` directory.
+- `install.sh`, `uninstall.sh`, `scripts/` — developer deployment and recovery helpers.
+- `build-release.sh` — prepares one public `-full-source.zip` for Publisher plus unsigned runtime ZIP/TAR.GZ intermediates in `release/` (not for public installation).
 
-Maintainer information: [development](docs/en/DEVELOPMENT.md), [installation checks](docs/en/INSTALL.md) and [changelog](CHANGELOG.md).
+The GitHub source archive does not include private HDS/CP21 audit records, internal tests, test-run evidence, private keys, personal data or runtime backups. It is **not** a substitute for the official signed App Store package.
 
-License: [AGPL-3.0-or-later](LICENSE).
+[Changelog](CHANGELOG.md) · [License: AGPL-3.0-or-later](LICENSE).
 
-## Languages
+## Localization
 
-The application UI supports all 11 languages: Czech (`cs`), English (`en`), German (`de`), Spanish (`es`), French (`fr`), Italian (`it`), Dutch (`nl`), Polish (`pl`), Portuguese (`pt`), Slovak (`sk`) and Ukrainian (`uk`). Unsupported languages and individual missing translations fall back to English (EN). Every catalog has the same complete key set and preserves message placeholders. Text returned directly by the server or Core components follows those services’ localization. Guides and development documentation are available only in Czech and English.
-
-
-
-```sh
-python3 scripts/check-languages.py
-```
-
-## About and updates
-
-About appears at the beginning of Application settings. It shows installed and published versions of the app and Core. “Check for updates” fetches GitHub again without waiting for the six-hour cache. Core 0.18.8 reads `src/appinfo/info.xml` from each application’s own repository and validates its ID. A newer NAS installation is shown as newer than published. Details: [Core version checks](https://github.com/hacesoft/core/blob/main/docs/en/CORE_REFERENCE.md).
+The UI ships with 11 language catalogs: `cs`, `en`, `de`, `es`, `fr`, `it`, `nl`, `pl`, `pt`, `sk`, `uk`. English is the fallback language. User/developer documentation is provided in Czech and English.

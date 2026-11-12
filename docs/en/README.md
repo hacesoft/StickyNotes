@@ -1,6 +1,6 @@
 [🇨🇿 Česky](../cz/README_CZ.md) | [🇬🇧 **English**](../en/README.md)
 
-# Sticky Notes documentation — 2.0.12
+# Sticky Notes documentation — 2.0.14
 
 [English](README.md) · [Česky](../cz/README_CZ.md) · [Main README](../../README.md)
 
@@ -18,7 +18,3 @@ Required dependency: install and enable [Core](https://github.com/hacesoft/core)
 The application UI supports all 11 languages: Czech (`cs`), English (`en`), German (`de`), Spanish (`es`), French (`fr`), Italian (`it`), Dutch (`nl`), Polish (`pl`), Portuguese (`pt`), Slovak (`sk`) and Ukrainian (`uk`). Unsupported languages and individual missing translations fall back to English (EN). Every catalog has the same complete key set and preserves message placeholders. Text returned directly by the server or Core components follows those services’ localization. Guides and development documentation are available only in Czech and English.
 
 
-
-```sh
-python3 scripts/check-languages.py
-```

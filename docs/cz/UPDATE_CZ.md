@@ -1,7 +1,7 @@
-[🇨🇿 **Česky**](../cz/UPDATE_CZ.md) | [🇬🇧 English](../en/UPDATE.md)
+[🇨🇿 **Česky**](UPDATE_CZ.md) | [🇬🇧 English](../en/UPDATE.md)
 
-# Aktualizace Lístečků
+# Aktualizace Žlutých lístečků 2.0.14
 
-[Česky](UPDATE_CZ.md) · [English](../en/UPDATE.md) · [Dokumentace](../cz/README_CZ.md)
+**Doporučeno (App Store):** Zálohujte databázi Nextcloudu i data aplikace. Ověřte, že Hacesoft Shared App Core 0.18.8+ je zapnuté, a aktualizujte oficiálně podepsané vydání pomocí **Nextcloud → Aplikace → Aktualizace**. Nesnažte se nahradit instalaci spravovanou App Store soubory ze zdrojového ZIPu GitHubu.
 
-Zálohuj společně databázi Nextcloudu a kód aplikace, aktualizuj a zapni Shared App Core 0.18.8+ a pak v rozbaleném **zdrojovém** ZIPu spusť `sudo sh install.sh`. Skript používá PHP pomocné soubory v `scripts/`, zachovává původní data a žádný import nespouští. Úplný postup a kontrolu účtů, úloh a prohlížeče obsahují [instalace](../cz/INSTALL_CZ.md) a [kontrola NC35](../cz/INSTALL_CZ.md). `build-release.sh` sestavuje nový runtime ZIP v `release/` pro správce projektu; pro instalaci staženého zdrojového balíku potřeba není.
+**Pouze pro vývojáře (vlastní Docker nasazení):** Pokud záměrně spravujete Dockerové prostředí podle [vývojářského instalačního návodu](INSTALL_CZ.md), vytvořte obnovitelnou zálohu databáze a runtime souborů a mimo `custom_apps/` z rozbaleného zdrojového balíčku spusťte `sudo sh install.sh`. Skript zachovává staré databázové záznamy, ale nemigruje je. Při přerušení viz [obnova](OPRAVA_INSTALACE.md). Nejde o univerzální aktualizační postup pro Nextcloud.

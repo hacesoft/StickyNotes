@@ -12,9 +12,9 @@ The number of widget columns and rows can be configured. These values determine 
 
 ## Pagination and layout
 
-Users can configure notes per page and workspace width. Version 2.0.9 contains a full responsive pass for the main page, filters, pagination, settings, categories, and dialogs. On narrow phones the note board switches to a single column and controls are constrained to the viewport.
+Users can configure notes per page and workspace width. The application includes a responsive layout for the main page, filters, pagination, settings, categories, and dialogs. On narrow phones the note board switches to a single column and controls are constrained to the viewport.
 
-Verify the responsive layout on the target phone, tablet, and desktop before publishing the NC35 release.
+The layout adapts to phones, tablets, and desktop browsers.
 
 ## Notifications
 

@@ -1,6 +1,6 @@
 [🇨🇿 **Česky**](../cz/README_CZ.md) | [🇬🇧 English](../en/README.md)
 
-# Dokumentace Lístečků — 2.0.12
+# Dokumentace Lístečků — 2.0.14
 
 [Česky](README_CZ.md) · [English](../en/README.md) · [Hlavní README](../../README.md)
 
@@ -19,8 +19,4 @@ Rozhraní aplikace podporuje všech 11 jazyků: čeština (`cs`), angličtina (`
 
 Při každé další úpravě aplikace se ověří jazyky proti společné sadě `cs`, `en`, `de`, `es`, `fr`, `it`, `nl`, `pl`, `pt`, `sk`, `uk`. Doplní se chybějící jazyky i překladové klíče, prověří se výběr jazyka podle Nextcloudu a aktualizuje seznam skutečně podporovaných jazyků. Přítomnost souboru není důkaz úplného překladu. Návody a vývojová dokumentace se vydávají pouze česky a anglicky.
 
-Kontrola překladů pro další vydání (Python 3 a Node.js):
-
-```sh
-python3 scripts/check-languages.py
-```
+Překlady se před oficiálním vydáním kontrolují v rámci Hacesoft Publisher HDS/CP21 (interní testy nejsou součástí veřejného zdrojového ZIPu).

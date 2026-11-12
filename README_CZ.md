@@ -1,62 +1,53 @@
 [🇨🇿 **Česky**](README_CZ.md) | [🇬🇧 English](README.md)
 
+# Žluté lístečky 2.0.14
 
-# Žluté lístečky 2.0.12
+Aplikace Sticky Notes pro Nextcloud: barevné osobní a sdílené poznámky, úkoly s termíny, kategorie, widget Dashboardu a volitelná oznámení. Lístečky lze sdílet s uživateli nebo skupinami s právem prohlížení či úprav.
 
-Aplikace pro Nextcloud z dílny Hacesoft pro osobní a sdílené poznámky, úkoly s termíny, kategorie, widget Dashboardu a volitelná oznámení. Poznámky lze sdílet s uživateli nebo skupinami s právem prohlížení či úprav.
+![Přehled Žlutých lístečků](screenshot/01.png)
 
-<img width="1134" height="617" alt="image" src="https://github.com/user-attachments/assets/c9e34307-17b8-4a27-97c3-cbb349a57cfe" />
+## Instalace — Nextcloud App Store (doporučeno)
 
-## Požadavky
+**Pro běžné uživatele a správce je určen oficiálně podepsaný balíček instalovaný přes Nextcloud. Neinstalujte aplikaci běžně spouštěním skriptu ze zdrojového ZIPu na GitHubu.**
 
-- Nextcloud 35 a PHP 8.3 nebo novější.
-- **Nainstalované a zapnuté [Hacesoft Core](https://github.com/hacesoft/core), verze 0.18.8 nebo novější.** Bez Core aplikace nefunguje.
+1. Přihlaste se do Nextcloudu jako správce a otevřete **Aplikace (Apps)**.
+2. V Nextcloud App Store vyhledejte **Sticky Notes / Žluté lístečky** (`hc_stickynotes`) a nainstalujte poslední oficiálně vydanou verzi.
+3. Nejprve nainstalujte a zapněte **Hacesoft Shared App Core** (`hc_shared_app_core`) **0.18.8 nebo novější**, poté nainstalujte a zapněte Lístečky.
+4. Aktualizace provádějte standardně přes správu **Aplikace**. Před aktualizací zálohujte databázi i data Nextcloudu.
 
-Core je samostatná aplikace a není přibalené k Lístečkům. Nejprve jej nainstalujte podle návodu v [repozitáři Core](https://github.com/hacesoft/core).
+Požadavky: **Nextcloud 35**, **PHP 8.3+**, zapnuté [Hacesoft Core](https://github.com/hacesoft/core) 0.18.8+. Core je samostatná povinná aplikace a není přibalena k Lístečkům. Nejnovější zdrojová verze nemusí být v App Storu dosud zveřejněna; samotný zdrojový ZIP z GitHubu **není podepsaný balíček pro App Store**.
 
-## Instalace a aktualizace
+[Podrobný návod k instalaci](docs/cz/INSTALL_CZ.md) · [Nextcloud App Store](https://apps.nextcloud.com/)
 
-Stáhněte a rozbalte kompletní zdrojový balíček. V kořeni rozbaleného projektu spusťte:
+## Pro vývojáře a vlastní Docker nasazení
+
+Tento repozitář obsahuje úplné *zdrojové kódy aplikace*. `install.sh` je **vývojářský/správcovský instalační nástroj pro konkrétní Dockerové nasazení Nextcloudu** (například Synology NAS), **nikoli doporučený způsob běžné instalace**. Vyžaduje `sudo`, funkční Docker a přístup ke kontejnerům. Není univerzálním instalátorem Nextcloudu:
 
 ```sh
 sudo sh install.sh
 ```
 
-Instalační skript podporuje zdokumentované nasazení Synology/Docker. Požadavky a postup aktualizace najdete v [instalačním návodu](docs/cz/INSTALL_CZ.md). Existující poznámky se při aktualizaci zachovávají v databázi. Před aktualizací zálohujte databázi a soubory aplikace.
+Nespouštějte jej na produkčním serveru jen proto, že je na GitHubu. Nejprve prostudujte skript, způsob nasazení a zálohování. Také `sudo sh uninstall.sh` slouží správcům tohoto Dockerového nasazení, nikoli k běžnému odebrání aplikace přes rozhraní Nextcloudu.
 
-Před odinstalací si přečtěte část o odstranění v instalačním návodu. Z kořene projektu použijte `sudo sh uninstall.sh`; před odstraněním uložených dat zkontrolujte volby skriptu.
+`sh build-release.sh` připraví **jediný veřejný vstupní ZIP** `hc_stickynotes-2.0.14-full-source.zip` pro Hacesoft Publisher a dále dva **interní nepodepsané sestavovací výstupy** `hc_stickynotes-2.0.14.zip` a `hc_stickynotes-2.0.14.tar.gz`, které vyžaduje Publisher 0.3.34. Publisheru se předává pouze `-full-source.zip`. Runtime kontroluje, podepisuje a publikuje Publisher; sestavení **není podpis ani publikace**. Oficiální vydání následně prochází kontrolami Hacesoft Publisher CP21 / HDS a podpisem soukromým klíčem správce, který se nikdy nezveřejňuje.
+
+[Vývojářská dokumentace](docs/cz/DEVELOPMENT_CZ.md) · [Aktualizace](docs/cz/UPDATE_CZ.md)
 
 ## Dokumentace
 
-- [Přehled dokumentace](docs/cz/README_CZ.md)
-- [Uživatelská příručka](docs/cz/USER_GUIDE_CZ.md)
-- [Sdílení a oprávnění](docs/cz/SHARING_CZ.md)
-- [Editor](docs/cz/EDITOR_CZ.md)
-- [Widget Dashboardu](docs/cz/DASHBOARD_CZ.md)
-- [Nastavení](docs/cz/SETTINGS_CZ.md)
-- [Oznámení](docs/cz/NOTIFICATIONS_CZ.md)
-- [Mobilní rozložení](docs/cz/MOBILNI_LAYOUT.md)
+[Přehled dokumentace](docs/cz/README_CZ.md) · [Uživatelská příručka](docs/cz/USER_GUIDE_CZ.md) · [Kategorie](docs/cz/CATEGORIES_CZ.md) · [Sdílení](docs/cz/SHARING_CZ.md) · [Editor](docs/cz/EDITOR_CZ.md) · [Dashboard](docs/cz/DASHBOARD_CZ.md) · [Nastavení](docs/cz/SETTINGS_CZ.md) · [Oznámení](docs/cz/NOTIFICATIONS_CZ.md) · [Mobilní rozložení](docs/cz/MOBILNI_LAYOUT.md)
 
-## Struktura zdrojů
+## Co obsahuje zdrojový balíček
 
-`src/` obsahuje aplikaci, `scripts/` instalační pomocníky a `docs/cz/` a `docs/en/` českou a anglickou dokumentaci. Kompletní zdrojový balíček obsahuje `install.sh` i `uninstall.sh`. `build-release.sh` sestavuje runtime ZIP/tarball z `src/`; generované výstupy patří do `release/`.
+- `src/` — úplné zdroje aplikace (PHP, JavaScript, CSS, překlady, šablony a metadata).
+- `docs/` — veřejné návody CZ/EN; screenshoty jsou samostatně v kořenovém adresáři GitHubu `screenshot/`.
+- `install.sh`, `uninstall.sh`, `scripts/` — pomocníky pro vývojářské nasazení a obnovu.
+- `build-release.sh` — vytvoří jeden veřejný zdrojový ZIP pro Publisher a interní nepodepsané runtime ZIP/TAR.GZ do `release/`.
 
-Podklady pro vývojáře: [vývoj](docs/cz/DEVELOPMENT_CZ.md), [instalační kontrola](docs/cz/INSTALL_CZ.md) a [přehled změn](CHANGELOG.cs.md).
+Veřejný GitHub ZIP neobsahuje interní podklady HDS/CP21, vývojové testy ani jejich evidenci, soukromé klíče, osobní data nebo provozní zálohy. **Nenahrazuje oficiálně podepsaný balíček z App Store.**
 
-Licence: [AGPL-3.0-or-later](LICENSE).
+[Přehled změn](CHANGELOG.cs.md) · [Licence: AGPL-3.0-or-later](LICENSE).
 
-## Jazykové mutace
+## Jazyky
 
-Rozhraní aplikace podporuje všech 11 jazyků: čeština (`cs`), angličtina (`en`), němčina (`de`), španělština (`es`), francouzština (`fr`), italština (`it`), nizozemština (`nl`), polština (`pl`), portugalština (`pt`), slovenština (`sk`) a ukrajinština (`uk`). Nepodporovaný jazyk i jednotlivý chybějící překlad používají angličtinu (EN). Katalogy obsahují shodnou úplnou sadu klíčů a zachovávají proměnné ve zprávách. Texty pocházející přímo ze serveru či komponent Core se řídí lokalizací těchto služeb. Návody a vývojová dokumentace jsou pouze CZ a EN.
-
-Při každé další úpravě aplikace se ověří jazyky proti společné sadě `cs`, `en`, `de`, `es`, `fr`, `it`, `nl`, `pl`, `pt`, `sk`, `uk`. Doplní se chybějící jazyky i překladové klíče, prověří se výběr jazyka podle Nextcloudu a aktualizuje seznam skutečně podporovaných jazyků. Přítomnost souboru není důkaz úplného překladu. Návody a vývojová dokumentace se vydávají pouze česky a anglicky.
-
-Kontrola překladů pro další vydání (Python 3 a Node.js):
-
-```sh
-python3 scripts/check-languages.py
-```
-
-## O aplikaci a aktualizace
-
-Blok O aplikaci je na začátku Nastavení aplikace. Zobrazuje nainstalovanou a zveřejněnou verzi aplikace i Core. Tlačítko „Zkontrolovat aktualizace“ načte GitHub znovu bez čekání na šestihodinovou cache. Core 0.18.8 čte `src/appinfo/info.xml` z vlastního repozitáře každé aplikace a ověřuje její ID. Vyšší verze na NASu se označí jako novější než zveřejněná. Podrobnosti: [kontrola verzí Core](https://github.com/hacesoft/core/blob/main/docs/cz/CORE_REFERENCE.md).
+Rozhraní obsahuje 11 jazyků: `cs`, `en`, `de`, `es`, `fr`, `it`, `nl`, `pl`, `pt`, `sk`, `uk`; náhradním jazykem je angličtina. Uživatelská a vývojářská dokumentace je v češtině a angličtině.

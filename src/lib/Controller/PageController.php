@@ -6,6 +6,7 @@ namespace OCA\HcStickyNotes\Controller;
 
 use OCA\HcStickyNotes\AppInfo\Application;
 use OCP\AppFramework\Controller;
+use OCP\IAppManager;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
@@ -13,7 +14,7 @@ use OCP\IRequest;
 use OCP\IURLGenerator;
 
 final class PageController extends Controller {
-    public function __construct(IRequest $request, private IURLGenerator $urlGenerator) {
+    public function __construct(IRequest $request, private IURLGenerator $urlGenerator, private IAppManager $appManager) {
         parent::__construct(Application::APP_ID, $request);
     }
 
@@ -39,14 +40,14 @@ final class PageController extends Controller {
     public function index(): TemplateResponse {
         $manifest = $this->coreManifest();
         return new TemplateResponse(Application::APP_ID, 'main', [
-            'appVersion' => Application::VERSION,
+            'appVersion' => $this->appManager->getAppVersion(Application::APP_ID),
             'requiredCoreVersion' => $manifest['requiredVersion'],
             'requiredCoreApiVersion' => $manifest['requiredApiVersion'],
             'coreDownloadUrl' => $manifest['downloadUrl'],
             'coreStatusUrl' => $this->urlGenerator->linkTo('', 'index.php/apps/hc_shared_app_core/api/v1/status'),
             'coreStyleUrl' => $this->urlGenerator->linkTo('hc_shared_app_core', 'css/workspace.css'),
             'coreScriptUrl' => $this->urlGenerator->linkTo('hc_shared_app_core', 'js/hc_shared_app_core.js'),
-            'appScriptUrl' => $this->urlGenerator->linkTo(Application::APP_ID, 'js/app-2.0.12.js'),
+            'appScriptUrl' => $this->urlGenerator->linkTo(Application::APP_ID, 'js/app-2.0.14.js'),
             'appShellUrl' => $this->urlGenerator->linkToRoute('hc_stickynotes.page.shell'),
         ]);
     }

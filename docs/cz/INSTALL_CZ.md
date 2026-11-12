@@ -1,22 +1,33 @@
-[🇨🇿 **Česky**](../cz/INSTALL_CZ.md) | [🇬🇧 English](../en/INSTALL.md)
+[🇨🇿 **Česky**](INSTALL_CZ.md) | [🇬🇧 English](../en/INSTALL.md)
 
-# Instalace Lístečků 2.0.12
+# Instalace Žlutých lístečků 2.0.14
 
-[Česky](INSTALL_CZ.md) · [English](../en/INSTALL.md) · [Dokumentace](../cz/README_CZ.md)
+## Doporučeno: podepsané vydání z Nextcloud App Store
 
-Cíl: Nextcloud 35, PHP 8.3+, zapnutý Shared App Core 0.18.8+. Následující skript počítá s projektovým Docker nasazením, webovým kontejnerem Nextcloudu (obvykle `nextcloud-app`) a případně samostatným cron kontejnerem.
+Žluté lístečky se pro běžný provoz **instalují a aktualizují přes Nextcloud → Aplikace**. Po zveřejnění `hc_stickynotes` v [Nextcloud App Store](https://apps.nextcloud.com/) postupujte takto:
 
-1. Vytvoř společnou obnovitelnou zálohu databáze Nextcloudu a kódu aplikace. Zachovej existující tabulky `stickynotes_*` a `hc_stickynotes_*` i uživatelskou konfiguraci. Zkontroluj `occ status` a verzi Core.
-2. Rozbal na NASu celý zdrojový ZIP včetně `src/`, `scripts/`, `install.sh` a `uninstall.sh`. V rozbalené složce spusť:
+1. Ověřte **Nextcloud 35** a **PHP 8.3+**. Zálohujte databázi a soubory Nextcloudu.
+2. Nejprve nainstalujte a zapněte [Hacesoft Shared App Core](https://github.com/hacesoft/core) (`hc_shared_app_core`) **0.18.8+**. Core je samostatná povinná aplikace.
+3. Ve správě **Aplikace** vyhledejte **Sticky Notes / Žluté lístečky** (`hc_stickynotes`), nainstalujte je a zapněte.
+4. Ověřte existující lístečky, kategorie, sdílení, připomínky a widget Dashboardu u odpovídajících uživatelů.
+5. Další aktualizace instalujte opět přes **Aplikace**, vždy po zálohování.
+
+Než se aplikace v obchodě objeví, musí správce projektu dokončit její zveřejnění. Veřejný *zdrojový ZIP* z GitHubu ani lokálně vytvořený runtime archiv nejsou podepsaným balíčkem z App Store. Tyto balíčky nezaměňujte.
+
+## Pouze pro vývojáře: vlastní Docker nasazení
+
+Následující postup **není určen běžným správcům Nextcloudu**, funguje jen v odpovídajícím **Dockerovém prostředí**. `sudo sh install.sh` vyžaduje oprávnění root na hostiteli a přístup k Dockeru; není to univerzální instalátor pro běžný Nextcloud nebo sdílený hosting.
+
+1. Vytvořte společnou obnovitelnou zálohu databáze a runtime souborů. Nemažte existující tabulky `stickynotes_*` ani `hc_stickynotes_*`.
+2. Prostudujte `install.sh`, pomocné skripty, očekávané kontejnery a instalaci Core. Ověřte, že nasazení odpovídá konkrétnímu instalátoru.
+3. Rozbalte vývojářský archiv `-full-source.zip` **mimo** `custom_apps/` a z kořene projektu spusťte:
 
 ```sh
 sudo sh install.sh
 ```
 
-3. Instalátor kontroluje Core a PHP, zálohuje dosavadní kód, povolí aplikaci, případně doplní chybějící strukturu tabulek a žádné záznamy ze starého ID `stickynotes` nepřevádí. Pokud cílová `hc_` tabulka chybí, zastaví se před výměnou kódu; staré databázové záznamy zůstávají zachovány. Podle [kontroly NC35](../cz/INSTALL_CZ.md) ověř poznámky s více účty, `occ background-job:list` a logy Nextcloudu.
+Instalátor ověřuje Core a syntaxi PHP, zálohuje předchozí kód, nasazuje aplikaci do webového a případně cron kontejneru a kontroluje stav databázového schématu. Nemigruje řádky ze starých tabulek `stickynotes_*` do `hc_stickynotes_*`. Při chybějící cílové tabulce a možných starých datech instalaci zastaví. [Obnova po přerušené instalaci](OPRAVA_INSTALACE.md).
 
-Pro ruční instalaci slouží samostatný runtime ZIP, který obsahuje pouze adresář `hc_stickynotes/` pro `custom_apps`; instalační skript pro Synology v něm není. Běžný `sudo sh uninstall.sh` odstraní kód a vlastní registraci úlohy, ale zachová poznámky.
+Samostatné runtime ZIP/TAR.GZ obsahují kořenový adresář `hc_stickynotes/`. Jsou to **nepodepsané sestavovací výstupy**, nikoli instalační balíčky pro koncové uživatele. Před oficiálním vydáním musí projít kontrolami Publisheru a podpisem. `sh build-release.sh` vytváří jediný **vstupní** zdrojový ZIP pro Publisher a interní nepodepsané runtime ZIP/TAR.GZ; Publisher runtime zkontroluje a podepíše.
 
-Volitelný `scripts/nas-migration-check.sh` jen čte původní databázové ID na původním nasazení MariaDB. Staré záznamy v databázi se zachovávají; zdrojový balík neobsahuje nástroj k jejich mazání.
-
-Povinná závislost: nainstalujte a zapněte [Core](https://github.com/hacesoft/core) verze 0.18.8 nebo novější. [Hlavní český README](../../README_CZ.md).
+Také `sudo sh uninstall.sh` je **vývojářský skript pro Docker**. Před použitím prostudujte volby; výchozí cesta odstraňuje kód a registrovanou úlohu aplikace, ale ponechává databázové záznamy. U běžné instalace z App Store používejte správu **Aplikace** a respektujte její upozornění při odinstalaci.
